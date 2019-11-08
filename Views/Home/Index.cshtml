@@ -1,0 +1,85 @@
+﻿
+@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+    <h1>All Users</h1>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Date Reg</th>
+                <th scope="col">Selected days</th>
+                <th scope="col">Added request</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: user">
+            <tr>
+                <td data-bind="text: UserId"></td>
+                <td data-bind="text: Name"></td>
+                <td data-bind="text: Email"></td>
+                <td data-bind="text: Gender"></td>
+                <td data-bind="text: DRegister"></td>
+                <td data-bind="text: Dates"></td>
+                <td data-bind="text: ARequest"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+</div>
+
+<div class="col-md-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">Add User</h2>
+        </div>
+
+        <div class="panel-body">
+            <form class="form-horizontal" data-bind="submit: addUser">
+                <div class="form-group" data-bind="with: newuser">
+                    <label for="inputTitle" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+                    <span id="Name"></span>
+                        <input type="text" class="form-control" id="inputTitle" data-bind="value:Name" />
+                    </div>
+                    <label for="inputYear" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                    <span id="Email"></span>
+                        <input type="email" class="form-control" id="inputYear" data-bind="value:Email" />
+                    </div>
+                    <label for="inputGenre" class="col-sm-2 control-label">Gender</label>
+                    <div class="col-sm-10">
+                    <span id="Gender"></span>
+                        <label><input type="radio" value="Female" data-bind="checked: Gender" />Female</label>
+                        <label><input type="radio" value="Male" data-bind="checked: Gender" />Male</label>
+                    </div>
+                    <label for="inputGenre" class="col-sm-2 control-label">Date reg</label>
+                    <div class="col-sm-10">
+                    <span id="DRegister"></span>
+                        <input type="date" class="form-control" id="inputGenre" data-bind="value:DRegister" />
+                    </div>
+                    <label for="inputGenre" class="col-sm-2 control-label">Dates</label>
+                    <span id="Dates"></span>
+                    <div class="col-sm-10">
+                        <input type="checkbox" data-bind="checked: Dates" value='Day 1' /> Day 1
+                        <input type="checkbox" data-bind="checked: Dates" value='Day 2' /> Day 2
+                        <input type="checkbox" data-bind="checked: Dates" value='Day 3' /> Day 3
+                    </div>
+                    <label for="inputPrice" class="col-sm-2 control-label">Request</label>
+                    <div class="col-sm-10">
+                    <span id="ARequest"></span>
+                        <textarea type="text" class="form-control" id="inputGenre" data-bind="value:ARequest"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <!-- TODO: Add new book -->
+</div>
