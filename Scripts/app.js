@@ -39,7 +39,6 @@
             contentType: 'application/json',
             data: data ? JSON.stringify(data) : null,
         }).fail(function (jqXHR, textStatus, errorThrown) {
-            console.log(errorThrown);
             self.error(errorThrown);
         });
     }
@@ -66,8 +65,6 @@
             Dates: self.newuser.Dates().toString(),
             ARequest: self.newuser.ARequest()
         };
-        console.log(user)
-
         validator(user);
         ajaxHelper(usersUri, 'POST', user).done(function (u) {
             self.user.push(u);
